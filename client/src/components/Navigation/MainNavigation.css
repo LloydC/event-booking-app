@@ -1,12 +1,22 @@
+/* color scheme https://colors.muz.li/palette/124c91/0d3565/911236/660d26/918912
+#124c91
+#0d3565
+#911236
+#660d26
+#918912
+
+*/
+
 .main-navigation {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 3.5rem;
-    background-color: turquoise;
+    background-color: #124c91;
     padding: 0 1rem;
     display: flex;
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -35,7 +45,7 @@
 .main-navigation_items a,
 .main-navigation_items button {
     text-decoration: none;
-    color: orange;
+    color: #918912;
     border: none;
     font: inherit;
     background: transparent;

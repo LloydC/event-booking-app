@@ -9,12 +9,18 @@ import './Events.css'
 export default class EventsPage extends Component {
     state = {
         eventsList: [],
-        creating: false,
+        creating: true,
         isLoading: false,
         selectedEvent: null
     }
     isActive = true;
-    static contextType = AuthContext
+    static contextType = AuthContext // generate this.context {token '', userId, login, logout}
+
+    modalOnClick = () => {
+        // get the geo location of user
+        // store those geo location to a your pglocation
+        // set the state of the property responsible for showing modal to false
+    }
 
     constructor(props){
         super(props);
@@ -192,7 +198,7 @@ export default class EventsPage extends Component {
     render() {
         return (
             <>
-                <h1>The Events Page</h1>
+                <h1 style={{textAlign: 'center'}}>The Events Page</h1>
                 {this.context.token && 
                 <div className="events-control">
                     <p>Share your Events!</p>
@@ -211,14 +217,14 @@ export default class EventsPage extends Component {
                     onConfirm={this.modalConfirmHandler}
                     confirmText="Confirm">
                     <form>
-                        <div className="form-control">
+                        {/* <div className="form-control">
                             <label htmlFor="title">Title</label>
                             <input type="text" name="title" ref={this.titleRef}/>
                         </div>
                         <div className="form-control">
                             <label htmlFor="price">Price</label>
                             <input type="number" name="price" ref={this.priceRef}/>
-                        </div>
+                        </div> */}
                         <div className="form-control">
                             <label htmlFor="date">Date</label>
                             <input type="datetime-local" name="date" ref={this.dateRef}/>

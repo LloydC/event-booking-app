@@ -39,7 +39,7 @@ export default class AuthPage extends Component {
         if(!this.state.isLogin){
              requestBody = {
                 query: `
-                    mutation CreateUser($email: String!, Spassword: String) {
+                    mutation CreateUser($email: String!, $password: String!) {
                         createUser(userInput: {email: $email, password: $password}){
                             _id
                             email
@@ -66,6 +66,7 @@ export default class AuthPage extends Component {
             return res.json()
         })
         .then(resData => {
+            console.log(resData)
             if(resData.data.login.token){
                 this.context.login(
                     resData.data.login.token, 
@@ -87,6 +88,7 @@ export default class AuthPage extends Component {
     render() {
         return (
             <form className="auth-form" onSubmit={this.submitHandler}>
+                <h1>{!this.state.isLogin ? 'Register your account' : 'Login'}</h1>
                 <div className="form-control">
                     <label htmlFor="email">E-Mail</label>
                     <input type="email" id="email" ref={this.emailEl}/>

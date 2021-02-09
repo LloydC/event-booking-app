@@ -11,17 +11,19 @@ import './App.css';
 const auth = new AuthService();
 
 let token, userId = null
+
 if(auth.getUser() !== null ){
   token = auth.getUser().token
   userId = auth.getUser().userId
 }
+
 export default class App extends Component {
   state = {
     token: token,
     userId: userId
   }
+  
   login = (token, userId, tokenExpiration) => {
-    
     this.setState({ token, userId })
   }
 

@@ -14,8 +14,8 @@
 }
 
 .bookings-control button.active {
-    border-bottom-color: turquoise;
-    color: turquoise;
+    border-bottom-color: #124c91;
+    color: #124c91;
 }
 
 .bookings-control button:focus{

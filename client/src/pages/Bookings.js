@@ -7,7 +7,7 @@ import BookingList from '../components/BookingList/BookingList'
 
 export default class BookingsPage extends Component {
     static contextType = AuthContext
-
+    
     state = {
         isLoading: false,
         bookings: [],
@@ -133,7 +133,7 @@ export default class BookingsPage extends Component {
         }
         return (
             <div>
-                <h1>The Bookings Page</h1>
+                <h1 style={{textAlign: 'center'}}>The Bookings Page</h1>
                 <ul>
                     {content}
                 </ul>
