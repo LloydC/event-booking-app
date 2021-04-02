@@ -9,7 +9,7 @@ import './Events.css'
 export default class EventsPage extends Component {
     state = {
         eventsList: [],
-        creating: true,
+        creating: false,
         isLoading: false,
         selectedEvent: null
     }
@@ -50,7 +50,7 @@ export default class EventsPage extends Component {
         }
         let requestBody = {
             query: `
-                    mutation CreateEvent($title: String!, $desc: String!, $price: Float!, $date: String){
+                    mutation CreateEvent($title: String!, $desc: String!, $price: Float!, $date: String!){
                         createEvent(eventInput: {title: $title, description: $desc, price: $price, date: $date}){
                             _id
                             title
@@ -89,6 +89,7 @@ export default class EventsPage extends Component {
         .then(resData => {
             console.log(resData.data)
             this.fetchEvents()
+            this.setState({creating: false, selectedEvent: null})
         })
         .catch(err => console.error(err))
     
@@ -213,18 +214,19 @@ export default class EventsPage extends Component {
                     title="Add Event" 
                     canCancel 
                     canConfirm 
+                    isLoggedIn={this.context.token !== null}
                     onCancel={this.modalCancelHandler} 
                     onConfirm={this.modalConfirmHandler}
                     confirmText="Confirm">
                     <form>
-                        {/* <div className="form-control">
+                        <div className="form-control">
                             <label htmlFor="title">Title</label>
                             <input type="text" name="title" ref={this.titleRef}/>
                         </div>
                         <div className="form-control">
                             <label htmlFor="price">Price</label>
                             <input type="number" name="price" ref={this.priceRef}/>
-                        </div> */}
+                        </div>
                         <div className="form-control">
                             <label htmlFor="date">Date</label>
                             <input type="datetime-local" name="date" ref={this.dateRef}/>

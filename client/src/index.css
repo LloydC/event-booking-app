@@ -46,3 +46,12 @@ code {
     background-color: royalblue;
     border-color: royalblue;
 }
+
+.form-actions button, .cancel {
+  background-color: #660d26;
+}
+
+.form-actions button, .cancel:hover {
+  background-color: #911236;
+}
+

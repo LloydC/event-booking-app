@@ -4,7 +4,7 @@ import './EventItem.css'
 const eventsItem = props => (
     <li className="events_list-item" key={props._id}>
             <div>
-                <h1>{props.title}</h1>
+                <h2>{props.title}</h2>
                 <p>{new Date(props.date).toLocaleDateString('de-DE')}</p>
             </div>
             <div>
