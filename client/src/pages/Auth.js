@@ -61,7 +61,8 @@ export default class AuthPage extends Component {
         })
         .then(res => {
             if(res.status !== 200){
-                throw new Error('Failed')
+                console.log(res.statusText)
+                throw new Error(`Failed! Response ${res.status}: ${res.statusText}` )
             }
             return res.json()
         })
