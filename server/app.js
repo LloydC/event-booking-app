@@ -1,7 +1,7 @@
 require("dotenv").config()
 const app = require("express")()
 const bodyParser = require("body-parser")
-const graphQlHttp = require("express-graphql")
+const { graphqlHTTP } = require('express-graphql');
 const mongoose = require("mongoose")
 const graphqlSchema = require("./graphql/schema/index")
 const graphqlResolvers = require("./graphql/resolvers/index")
@@ -19,7 +19,7 @@ app.use((req, res, next) =>{
     }
     return next()
 })
-app.use('/graphql', graphQlHttp({
+app.use('/graphql', graphqlHTTP({
     schema: graphqlSchema,
     rootValue: graphqlResolvers,
     graphiql: true
