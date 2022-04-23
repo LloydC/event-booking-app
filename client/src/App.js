@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {BrowserRouter, Switch, Redirect, Route} from 'react-router-dom';
+import React, { Component } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import AuthPage from './pages/Auth'
 import BookingsPage from './pages/Bookings'
 import EventsPage from './pages/Events'
@@ -44,14 +44,14 @@ export default class App extends Component {
             logout: this.logout}}>
             <MainNavigation/>
             <main className="main-content">
-              <Switch>
-                    {this.state.token && <Redirect exact from="/" to="/events"/>}
-                    {this.state.token && <Redirect exact from="/auth" to="/events"/>}
+              <Routes>
+                    {/* {this.state.token && <Navigate exact from="/" to="/events"/>}
+                    {this.state.token && <Navigate exact from="/auth" to="/events"/>} */}
                     {!this.state.token && <Route exact path="/auth" component={AuthPage} />}
                     <Route path="/events" component={EventsPage}/>
                     {this.state.token && <Route path="/bookings" component={BookingsPage}/>}
-                    {!this.state.token && <Redirect exact to="/auth"/>}
-              </Switch>
+                    {/* {!this.state.token && <Navigate exact to="/auth"/>} */}
+              </Routes>
             </main>  
           </AuthContext.Provider>
         </React.Fragment>
