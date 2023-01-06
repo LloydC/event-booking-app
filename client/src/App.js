@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import AuthPage from './pages/Auth'
 import BookingsPage from './pages/Bookings'
 import EventsPage from './pages/Events'
@@ -34,7 +34,7 @@ export default class App extends Component {
 
   render(){
     return (
-    <BrowserRouter>
+    <Router>
       <React.Fragment>
         <AuthContext.Provider 
           value={{
@@ -47,15 +47,15 @@ export default class App extends Component {
               <Routes>
                     {/* {this.state.token && <Navigate exact from="/" to="/events"/>}
                     {this.state.token && <Navigate exact from="/auth" to="/events"/>} */}
-                    {!this.state.token && <Route exact path="/auth" component={AuthPage} />}
-                    <Route path="/events" component={EventsPage}/>
-                    {this.state.token && <Route path="/bookings" component={BookingsPage}/>}
+                    {!this.state.token && <Route exact path="auth" element={<AuthPage />} />}
+                    <Route path="events" element={<EventsPage />}/>
+                    {this.state.token && <Route path="bookings" element={<BookingsPage />}/>}
                     {/* {!this.state.token && <Navigate exact to="/auth"/>} */}
               </Routes>
             </main>  
           </AuthContext.Provider>
         </React.Fragment>
-    </BrowserRouter>
+    </Router>
 
     );
   }
