@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import AuthPage from './pages/Auth'
 import BookingsPage from './pages/Bookings'
 import EventsPage from './pages/Events'
@@ -45,12 +45,12 @@ export default class App extends Component {
             <MainNavigation/>
             <main className="main-content">
               <Routes>
-                    {/* {this.state.token && <Navigate exact from="/" to="/events"/>}
-                    {this.state.token && <Navigate exact from="/auth" to="/events"/>} */}
-                    {!this.state.token && <Route exact path="auth" element={<AuthPage />} />}
-                    <Route path="events" element={<EventsPage />}/>
+                    {!this.state.token && <Route path='/' element={<Navigate to="/auth"/>} />}
+                    {!this.state.token && <Route path="auth" element={<AuthPage />} />}
+                    {this.state.token && <Route path='/' element={<Navigate to="/events"/>} />}
+                    {this.state.token && <Route path='/auth' element={<Navigate to="/events"/>} />}
                     {this.state.token && <Route path="bookings" element={<BookingsPage />}/>}
-                    {/* {!this.state.token && <Navigate exact to="/auth"/>} */}
+                    <Route path="events" element={<EventsPage />}/>
               </Routes>
             </main>  
           </AuthContext.Provider>
