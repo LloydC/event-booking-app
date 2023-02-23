@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import AuthContext from '../context/auth-context'
+import {AuthContext} from '../context/auth-context'
 import './Auth.css'
 
 export default class AuthPage extends Component {
